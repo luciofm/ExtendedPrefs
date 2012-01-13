@@ -103,6 +103,15 @@ public class ExtendedPrefs {
 			return ret;
 		return values;
 	}
+
+	public Object getData(String key, Type type) {
+		String jsonString = mPrefs.getString(key, null);
+		if (TextUtils.isEmpty(jsonString))
+			return null;
+		Gson gson = new GsonBuilder().create();;
+		return gson.fromJson(jsonString, type);
+	}
+
 	public void registerOnExtendedPreferenceChangeListener(
 			OnExtendedPreferenceChangeListener listener) {
 		mListeners.put(listener, mContent);

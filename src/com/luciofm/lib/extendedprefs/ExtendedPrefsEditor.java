@@ -113,6 +113,14 @@ public class ExtendedPrefsEditor {
 		return this;
 	}
 
+	public ExtendedPrefsEditor putData(String key, Type type, Object value) {
+		Gson gson = new GsonBuilder().create();
+		String jsonValue = gson.toJson(value, type);
+		if (jsonValue != null)
+			mEditor.putString(key, jsonValue);
+		return this;
+	}
+
 	public ExtendedPrefsEditor remove(String key) {
 		mEditor.remove(key);
 		return this;
