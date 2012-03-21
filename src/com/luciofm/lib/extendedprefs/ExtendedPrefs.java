@@ -65,8 +65,7 @@ public class ExtendedPrefs {
 	}
 
 	public int getInt(String key, int defValue) {
-		mPrefs.getInt(key, defValue);
-		return 0;
+		return mPrefs.getInt(key, defValue);
 	}
 
 	public long getLong(String key, long defValue) {
