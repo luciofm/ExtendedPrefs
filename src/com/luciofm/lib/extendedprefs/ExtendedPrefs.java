@@ -85,8 +85,7 @@ public class ExtendedPrefs {
 	}
 
 	public int getInt(String key, int defValue) {
-		mPrefs.getInt(key, defValue);
-		return 0;
+		return mPrefs.getInt(key, defValue);
 	}
 
 	public long getLong(String key, long defValue) {
@@ -123,6 +122,15 @@ public class ExtendedPrefs {
 			return ret;
 		return values;
 	}
+
+	public Object getData(String key, Type type) {
+		String jsonString = mPrefs.getString(key, null);
+		if (TextUtils.isEmpty(jsonString))
+			return null;
+		Gson gson = new GsonBuilder().create();;
+		return gson.fromJson(jsonString, type);
+	}
+
 	public void registerOnExtendedPreferenceChangeListener(
 			OnExtendedPreferenceChangeListener listener) {
 		mListeners.put(listener, mContent);
