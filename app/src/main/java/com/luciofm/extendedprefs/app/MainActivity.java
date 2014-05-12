@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
         /* Another way to read/save objects */
         ExtendedPrefsEditor editor = prefs.edit();
         Type type = new TypeToken<TestObject>(){}.getType();
-        editor.putData("test2", type, test);
+        editor.putData("test2", type, test).commit();
 
         saved = (TestObject) prefs.getData("test2", type);
         Log.d("ExtendedPrefs", "Load object 2: " + saved.toString());
